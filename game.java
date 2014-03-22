@@ -1,3 +1,5 @@
+package game;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -22,7 +24,7 @@ public class game extends JFrame implements ActionListener {
       textField.addActionListener(this);
       panel.add(textField, BorderLayout.PAGE_END);
             
-      //Outputted text area
+      //Output text area
       textArea = new JTextArea();
       textArea.setEditable(false);
       textArea.setLineWrap(true);
@@ -31,13 +33,34 @@ public class game extends JFrame implements ActionListener {
       //scrolling function
       scrollPane = new JScrollPane(textArea);
       scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+      scrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
       panel.add(scrollPane, BorderLayout.CENTER);
       
       //set the games fonts and colors
+      //label
       label.setFont(new Font("monospaced", Font.BOLD, 16));
+      label.setForeground(Color.white);
+      label.setBackground(Color.black);
+      label.setOpaque(true);
+      label.setBorder(null);
+      //textField
       textField.setFont(new Font("monospaced", 0, 16));
+      textField.setForeground(Color.white);
+      textField.setBackground(Color.black);
+      textField.setOpaque(true);
+      textField.setBorder(null);
+      //textArea
       textArea.setFont(new Font("monospaced", 0, 16));
-      
+      textArea.setForeground(Color.white);
+      textArea.setBackground(Color.black);
+      textArea.setOpaque(true);
+      textArea.setBorder(null);
+      //scrollPane
+      scrollPane.setBorder(null);
+      //panel
+      panel.setBorder(null);
+      panel.setForeground(Color.black);
+      panel.setBackground(Color.black);
       add(panel);
       
       
@@ -45,15 +68,17 @@ public class game extends JFrame implements ActionListener {
       setLocationRelativeTo(null);
       setDefaultCloseOperation(EXIT_ON_CLOSE);
       setVisible(true);
-         
+      //panel.setTitle("")   
    }  
    
    public void actionPerformed(ActionEvent e){
       String text = textField.getText();
-      textArea.append(text + "\n");
-      textArea.setCaretPosition(textArea.getDocument().getLength());
-      textField.setText("");
-      textArea.setCaretPosition(textArea.getDocument().getLength());
+      if(!(text.equals(""))){
+    	  textArea.append(text + "\n");
+    	  textArea.setCaretPosition(textArea.getDocument().getLength());
+    	  textField.setText("");
+    	  textArea.setCaretPosition(textArea.getDocument().getLength());
+      }
    }  
    
    public String a(String str){
